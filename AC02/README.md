@@ -387,6 +387,6 @@ D'(1,5; 3)
 
 ## Conclusão
 
-A atividade demonstrou como diferentes transformações geométricas modificam pontos e figuras no plano cartesiano.
+A atividade demonstrou como diferentes transformações geométricas mudam pontos e figuras no plano cartesiano.
 
-A translação altera a posição, a escala modifica as dimensões, a rotação altera a orientação, a reflexão espelha o objeto e o cisalhamento provoca uma inclinação. Também foi possível observar que, em uma composição, as transformações precisam ser aplicadas exatamente na ordem indicada.
+A translação move a posição, a escala muda as dimensões, a rotação muda a orientação, a reflexão espelha o objeto e o cisalhamento inclina a figura. Também foi possível observar que, em uma composição, as transformações precisam ser aplicadas exatamente na ordem indicada.
