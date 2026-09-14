@@ -1,8 +1,5 @@
 """
 AC02 — Transformações Geométricas 2D
-
-Resolve e representa graficamente os dez exercícios da atividade
-utilizando NumPy e Matplotlib.
 """
 
 from pathlib import Path
@@ -14,17 +11,17 @@ import numpy as np
 PASTA_RESULTADOS = Path(__file__).resolve().parent / "resultados"
 
 
-# ---------------------------------------
+
 # Funções das transformações geométricas
-# ---------------------------------------
+
 
 def translacao(pontos, tx, ty):
-    """Translada os pontos por meio do vetor (tx, ty)."""
+    
     return pontos + np.array([tx, ty], dtype=float)
 
 
 def escala(pontos, sx, sy=None):
-    """Aplica escala uniforme ou não uniforme."""
+    
     if sy is None:
         sy = sx
 
@@ -37,7 +34,7 @@ def escala(pontos, sx, sy=None):
 
 
 def rotacao(pontos, angulo_graus):
-    """Rotaciona os pontos ao redor da origem."""
+    
     angulo = np.radians(angulo_graus)
 
     matriz = np.array([
@@ -49,7 +46,7 @@ def rotacao(pontos, angulo_graus):
 
 
 def reflexao_x(pontos):
-    """Reflete os pontos em relação ao eixo x."""
+    
     matriz = np.array([
         [1, 0],
         [0, -1],
@@ -59,7 +56,7 @@ def reflexao_x(pontos):
 
 
 def reflexao_y(pontos):
-    """Reflete os pontos em relação ao eixo y."""
+    
     matriz = np.array([
         [-1, 0],
         [0, 1],
@@ -69,7 +66,7 @@ def reflexao_y(pontos):
 
 
 def cisalhamento_horizontal(pontos, k):
-    """Aplica cisalhamento horizontal: x' = x + k*y."""
+    
     matriz = np.array([
         [1, k],
         [0, 1],
@@ -78,12 +75,12 @@ def cisalhamento_horizontal(pontos, k):
     return pontos @ matriz.T
 
 
-# -----------------------------------------
+
 # Funções para apresentação dos resultados
-# -----------------------------------------
+
 
 def formatar_numero(valor):
-    """Formata números e elimina resultados como -0.00."""
+    
     if abs(valor) < 1e-10:
         valor = 0.0
 
@@ -97,7 +94,7 @@ def plotar_etapas(
     rotulos,
     poligono=False,
 ):
-    """Plota e salva todas as etapas de uma transformação."""
+    
     cores = ["#1565C0", "#2E7D32", "#EF6C00", "#C62828"]
     estilos = ["-", "--", "-.", ":"]
     deslocamentos = [(7, -14), (7, 7), (7, -14), (7, 7)]
@@ -178,7 +175,7 @@ def plotar_etapas(
 
 
 def imprimir_resultado(numero_exercicio, rotulos, pontos):
-    """Mostra as coordenadas finais no terminal."""
+    
     coordenadas = ", ".join(
         f"{rotulo}'({formatar_numero(x)}, {formatar_numero(y)})"
         for rotulo, (x, y) in zip(rotulos, pontos)
@@ -187,14 +184,14 @@ def imprimir_resultado(numero_exercicio, rotulos, pontos):
     print(f"Exercício {numero_exercicio}: {coordenadas}")
 
 
-# -------------------------
+
 # Resolução dos exercícios
 # -------------------------
 
 def executar_exercicios():
     PASTA_RESULTADOS.mkdir(exist_ok=True)
 
-    # Exercício 1 — Translação simples
+    # Exercício 1 
     ponto = np.array([[2, 3]], dtype=float)
     resultado = translacao(ponto, 4, -2)
 
@@ -207,7 +204,7 @@ def executar_exercicios():
 
     imprimir_resultado(1, ["P"], resultado)
 
-    # Exercício 2 — Escala uniforme
+    # Exercício 2 
     triangulo = np.array([
         [1, 1],
         [3, 1],
@@ -226,7 +223,7 @@ def executar_exercicios():
 
     imprimir_resultado(2, ["A", "B", "C"], resultado)
 
-    # Exercício 3 — Escala não uniforme
+    # Exercício 3 
     resultado = escala(triangulo, 2, 0.5)
 
     plotar_etapas(
@@ -242,7 +239,7 @@ def executar_exercicios():
 
     imprimir_resultado(3, ["A", "B", "C"], resultado)
 
-    # Exercício 4 — Rotação de 90° anti-horária
+    # Exercício 4 
     ponto = np.array([[1, 0]], dtype=float)
     resultado = rotacao(ponto, 90)
 
@@ -258,7 +255,7 @@ def executar_exercicios():
 
     imprimir_resultado(4, ["P"], resultado)
 
-    # Exercício 5 — Rotação de 45° horária
+    # Exercício 5 
     quadrado = np.array([
         [1, 1],
         [1, 4],
@@ -285,7 +282,7 @@ def executar_exercicios():
         resultado,
     )
 
-    # Exercício 6 — Reflexão no eixo y
+    # Exercício 6 
     ponto = np.array([[2, 5]], dtype=float)
     resultado = reflexao_y(ponto)
 
@@ -301,7 +298,7 @@ def executar_exercicios():
 
     imprimir_resultado(6, ["P"], resultado)
 
-    # Exercício 7 — Reflexão no eixo x
+    # Exercício 7 
     triangulo_reflexao = np.array([
         [2, 3],
         [4, 3],
@@ -323,7 +320,7 @@ def executar_exercicios():
 
     imprimir_resultado(7, ["A", "B", "C"], resultado)
 
-    # Exercício 8 — Cisalhamento horizontal
+    # Exercício 8 
     ponto = np.array([[2, 3]], dtype=float)
     resultado = cisalhamento_horizontal(ponto, 2)
 
@@ -339,7 +336,7 @@ def executar_exercicios():
 
     imprimir_resultado(8, ["P"], resultado)
 
-    # Exercício 9 — Composição de transformações
+    # Exercício 9 
     ponto_original = np.array([[3, 2]], dtype=float)
     apos_translacao = translacao(ponto_original, 1, -1)
     apos_rotacao = rotacao(apos_translacao, 90)
@@ -359,7 +356,7 @@ def executar_exercicios():
 
     imprimir_resultado(9, ["P"], resultado)
 
-    # Exercício 10 — Combinação em um retângulo
+    # Exercício 10 
     retangulo = np.array([
         [1, 1],
         [5, 1],
