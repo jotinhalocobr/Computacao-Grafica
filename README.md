@@ -1,6 +1,6 @@
 # Computação Gráfica
 
-Repositório destinado às atividades avaliativas da disciplina de Computação Gráfica.
+
 
 ## Atividades
 
