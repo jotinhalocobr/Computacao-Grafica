@@ -14,9 +14,9 @@ import numpy as np
 PASTA_RESULTADOS = Path(__file__).resolve().parent / "resultados"
 
 
-# ---------------------------------------------------------
+# ---------------------------------------
 # Funções das transformações geométricas
-# ---------------------------------------------------------
+# ---------------------------------------
 
 def translacao(pontos, tx, ty):
     """Translada os pontos por meio do vetor (tx, ty)."""
@@ -78,9 +78,9 @@ def cisalhamento_horizontal(pontos, k):
     return pontos @ matriz.T
 
 
-# ---------------------------------------------------------
+# -----------------------------------------
 # Funções para apresentação dos resultados
-# ---------------------------------------------------------
+# -----------------------------------------
 
 def formatar_numero(valor):
     """Formata números e elimina resultados como -0.00."""
@@ -187,9 +187,9 @@ def imprimir_resultado(numero_exercicio, rotulos, pontos):
     print(f"Exercício {numero_exercicio}: {coordenadas}")
 
 
-# ---------------------------------------------------------
+# -------------------------
 # Resolução dos exercícios
-# ---------------------------------------------------------
+# -------------------------
 
 def executar_exercicios():
     PASTA_RESULTADOS.mkdir(exist_ok=True)
